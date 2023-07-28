@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      height: 400px;
+      margin: 0 auto;
+      padding: 50px;
+      background-color: #93c3fa;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .container label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .container button {
+      display: block;
+      width: 95%;
+      padding: 10px;
+      font-size: 20px;
+      background-color: #428bca;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .container button:hover {
+      background-color: #3071a9;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter your name">
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <button onclick="login()">Log in</button>
+    <p class="error-message" id="error"></p>
+  </div>
+
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === '' || password === '') {
+        document.getElementById('error').textContent = 'Please enter both username and password.';
+        return;
+      }
+
+      // Hash the password (example, not secure)
+      var hashedPassword = hashPassword(password);
+
+      // Perform further authentication logic here (e.g., check against a database)
+
+      // Example validation: Username is 'admin' and password is 'password'
+      if (username === 'admin' && hashedPassword === '5f4dcc3b5aa765d61d8327deb882cf99') {
+        alert('Login successful!');
+        // Redirect to a dashboard or home page
+      } else {
+        document.getElementById('error').textContent = 'Invalid username or password.';
+      }
+    }
+
+    function hashPassword(password) {
+      // Example hashing using MD5 (not secure)
+      return md5(password);
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js">
+  </script>
+</body>
+</html>
